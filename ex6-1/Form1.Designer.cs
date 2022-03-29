@@ -50,6 +50,8 @@ namespace ex6_2
             this.btnPrintLastName = new System.Windows.Forms.Button();
             this.dlgPrint = new System.Windows.Forms.PrintDialog();
             this.picPhone = new System.Windows.Forms.PictureBox();
+            this.cboLetter = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPhone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,9 +214,9 @@ namespace ex6_2
             // 
             // btnPrintRecord
             // 
-            this.btnPrintRecord.Location = new System.Drawing.Point(160, 282);
+            this.btnPrintRecord.Location = new System.Drawing.Point(184, 290);
             this.btnPrintRecord.Name = "btnPrintRecord";
-            this.btnPrintRecord.Size = new System.Drawing.Size(75, 23);
+            this.btnPrintRecord.Size = new System.Drawing.Size(91, 37);
             this.btnPrintRecord.TabIndex = 16;
             this.btnPrintRecord.Text = "Print Record";
             this.btnPrintRecord.UseVisualStyleBackColor = true;
@@ -222,11 +224,11 @@ namespace ex6_2
             // 
             // btnPrintLastName
             // 
-            this.btnPrintLastName.Location = new System.Drawing.Point(292, 282);
+            this.btnPrintLastName.Location = new System.Drawing.Point(287, 290);
             this.btnPrintLastName.Name = "btnPrintLastName";
-            this.btnPrintLastName.Size = new System.Drawing.Size(116, 23);
+            this.btnPrintLastName.Size = new System.Drawing.Size(102, 37);
             this.btnPrintLastName.TabIndex = 17;
-            this.btnPrintLastName.Text = "Print \"S\" Last Names";
+            this.btnPrintLastName.Text = "Print Selected Last Names";
             this.btnPrintLastName.UseVisualStyleBackColor = true;
             this.btnPrintLastName.Click += new System.EventHandler(this.btnPrintLastName_Click);
             // 
@@ -238,19 +240,66 @@ namespace ex6_2
             // picPhone
             // 
             this.picPhone.Image = ((System.Drawing.Image)(resources.GetObject("picPhone.Image")));
-            this.picPhone.Location = new System.Drawing.Point(239, 280);
+            this.picPhone.Location = new System.Drawing.Point(83, 290);
             this.picPhone.Name = "picPhone";
-            this.picPhone.Size = new System.Drawing.Size(47, 33);
+            this.picPhone.Size = new System.Drawing.Size(69, 86);
             this.picPhone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPhone.TabIndex = 18;
             this.picPhone.TabStop = false;
             this.picPhone.Visible = false;
             // 
+            // cboLetter
+            // 
+            this.cboLetter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLetter.FormattingEnabled = true;
+            this.cboLetter.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z"});
+            this.cboLetter.Location = new System.Drawing.Point(287, 355);
+            this.cboLetter.Name = "cboLetter";
+            this.cboLetter.Size = new System.Drawing.Size(103, 21);
+            this.cboLetter.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(297, 339);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Select A Letter";
+            // 
             // frmPhoneDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 325);
+            this.ClientSize = new System.Drawing.Size(496, 394);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cboLetter);
             this.Controls.Add(this.picPhone);
             this.Controls.Add(this.btnPrintLastName);
             this.Controls.Add(this.btnPrintRecord);
@@ -304,6 +353,8 @@ namespace ex6_2
         private System.Windows.Forms.Button btnPrintLastName;
         private System.Windows.Forms.PrintDialog dlgPrint;
         private System.Windows.Forms.PictureBox picPhone;
+        private System.Windows.Forms.ComboBox cboLetter;
+        private System.Windows.Forms.Label label4;
     }
 }
 

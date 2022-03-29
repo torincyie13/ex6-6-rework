@@ -18,7 +18,9 @@ namespace ex6_2
         SqlConnection phoneConnection;
         SqlCommand phoneCommand;
         SqlDataAdapter phoneAdapter;
+        // SqlDataAdapter phoneAdapter2;
         DataTable phoneTable;
+        // DataTable phoneTable2;
         CurrencyManager phoneManager;
         public frmPhoneDB()
         {
@@ -37,10 +39,11 @@ namespace ex6_2
             // establish command object
             phoneCommand = new SqlCommand("SELECT * FROM PhoneTable ORDER BY ContactName", phoneConnection);
             // establish data adapter / data table
-             phoneAdapter = new SqlDataAdapter();
+            phoneAdapter = new SqlDataAdapter();
             phoneAdapter.SelectCommand = phoneCommand;
             phoneTable = new DataTable();
             phoneAdapter.Fill(phoneTable);
+
             // bind controls to data table
             txtID.DataBindings.Add("Text", phoneTable, "ContactID");
             txtName.DataBindings.Add("Text", phoneTable, "ContactName");
@@ -331,7 +334,8 @@ namespace ex6_2
 
         private void PrintSLastNames(object sender, PrintPageEventArgs e)
         {
-            string sql = "SELECT * FROM PhoneTable WHERE ContactName LIKE 'S%'";
+            string letterPicked = cboLetter.SelectedItem.ToString();
+            string sql = "SELECT * FROM PhoneTable WHERE ContactName LIKE '" + letterPicked + "%'" ;
             //int i = Convert.ToInt32(whichButton.Name);
             //if (i >= 0 && i <= 24) // A to Y
             //{
@@ -350,17 +354,18 @@ namespace ex6_2
             // establish data adapter/data table
             phoneAdapter = new SqlDataAdapter();
             phoneAdapter.SelectCommand = phoneCommand;
-            DataTable phoneTable2 = new DataTable();
-            phoneAdapter.Fill(phoneTable2);
+            DataTable phoneTable = new DataTable();
+            phoneAdapter.Fill(phoneTable);
             // print headings
-            Font myFont = new Font("Arial", 18, FontStyle.Bold);
+            Font myFont = new Font("Arial", 12, FontStyle.Bold);
             int y = Convert.ToInt32(e.MarginBounds.Top);
-            e.Graphics.DrawString("Last Names Starting With S " +
+            e.Graphics.DrawString("Last Names Starting With " + letterPicked + " " +
                 DateTime.Now.ToString(), myFont, Brushes.Black,
                 e.MarginBounds.Left, y);
             y += Convert.ToInt32(myFont.GetHeight());
             //e.Graphics.DrawString("Page " + pageNumber.ToString(),
             //    myFont, Brushes.Black, e.MarginBounds.Left, y);
+
             y += Convert.ToInt32(myFont.GetHeight()) + 10;
             e.Graphics.DrawLine(Pens.Black, e.MarginBounds.Left, y,
                 e.MarginBounds.Right, y);
@@ -369,8 +374,25 @@ namespace ex6_2
                 e.Graphics.DrawString("Last Names: " +
                 row["ContactName"].ToString(), myFont,
                 Brushes.Black, e.MarginBounds.Left, y);
+                //y += Convert.ToInt32(myFont.GetHeight());
+
+                e.Graphics.DrawString("Number: " +
+                row["ContactNumber"].ToString(), myFont,
+                Brushes.Black, e.MarginBounds.Left + Convert.ToInt32(0.35 * (e.MarginBounds.Width)), y);
                 y += Convert.ToInt32(myFont.GetHeight());
             }
+
+            //y += Convert.ToInt32(myFont.GetHeight()) + 10;
+            //e.Graphics.DrawLine(Pens.Black, e.MarginBounds.Left, y,
+            //    e.MarginBounds.Right, y);
+            //foreach (DataRow row in phoneTable.Rows)
+            //{
+            //    e.Graphics.DrawString("Number: " +
+            //    row["ContactNumber"].ToString(), myFont,
+            //    Brushes.Black, e.MarginBounds.Left + Convert.ToInt32(0.6 * (e.MarginBounds.Width)), y);
+            //    y += Convert.ToInt32(myFont.GetHeight());
+            //}
+
             //y += Convert.ToInt32(myFont.GetHeight());
             //myFont = new Font("Courier new", 12, FontStyle.Regular);
             //int iEnd = recordsPerPage * pageNumber;
